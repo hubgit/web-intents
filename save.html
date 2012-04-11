@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Intent: Save</title>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style>h1 { margin: 10px 0; }</style>
+<script>window.Intent = window.Intent || window.WebKitIntent || window.MozIntent</script>
+
+<!-- TODO: link[rel=canonical], link[rel=bookmark] -->
+
+<div class="container">
+
+<header>
+	<h1>Web Intent: Save</h1>
+</header>
+
+<ol>
+	<li><a href="https://chrome.google.com/webstore/detail/eaefpedeienehcklfkdcembjhmihdmfm">Install the Metatato Chrome extension</a>, which provides a "save" intent handler.</li>
+	<li><a class="btn btn-primary" rel="bookmark" href="http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0034074">Save an example URL</a></li>
+</ol>
+
+</div>
+
+<script>
+var nodes = document.querySelectorAll("a[rel=bookmark]");
+
+for (var i = 0; i< nodes.length; i++) {
+	var node = nodes[i];
+
+	node.setAttribute("title", "Bookmark This Page");
+
+	node.addEventListener("click", function(event) {
+		event.preventDefault();
+		window.navigator.startActivity(new Intent("http://webintents.org/save", "text/uri-list", this.href)); 
+	}, true);
+}
+</script>
