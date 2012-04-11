@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Web Intents: Share</title>
+<script>window.Intent = window.Intent || window.WebKitIntent;</script>
 
-<a href="#" id="share" onclick="shareIntent(); return false;">Share</a>
-
-<script>
-window.Intent = window.Intent || window.WebKitIntent;
-
-var shareIntent = function(){
-	var intent = new Intent("http://webintents.org/share", "text/uri-list", "http//google.com");
-	window.navigator.startActivity(intent);
-	return false;
-}
-</script>
+<a rel="bookmark" href="." id="share" onclick="window.navigator.startActivity(new Intent('http://webintents.org/share', 'text/uri-list', this.href)); return false;">Share</a>
