@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Intent: View</title>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style>h1 { margin: 10px 0; }</style>
+<script>window.Intent = window.Intent || window.WebKitIntent || window.MozIntent</script>
+
+<div class="container">
+
+<header>
+	<h1>Web Intent: View</h1>
+</header>
+
+<ol>
+	<li><a href="https://chrome.google.com/webstore/detail/eaefpedeienehcklfkdcembjhmihdmfm">Install the Metatato Chrome extension</a>, which provides a "view" intent handler.</li>
+	<li><a class="btn btn-primary" rel="alternate" type="application/pdf" href="http://www.plosone.org/article/fetchObject.action?uri=info%3Adoi%2F10.1371%2Fjournal.pone.0034074&amp;representation=PDF">View an example PDF</a></li>
+</ol>
+
+</div>
+
+<script>
+var nodes = document.querySelectorAll("a[rel=alternate][type='application/pdf']");
+
+for (var i = 0; i< nodes.length; i++) {
+	var node = nodes[i];
+
+	node.setAttribute("title", "View this PDF");
+
+	node.addEventListener("click", function(event) {
+		event.preventDefault();
+		window.navigator.startActivity(new Intent("http://webintents.org/view", "application/pdf", this.href)); 
+	}, true);
+}
+</script>
