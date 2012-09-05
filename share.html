@@ -2,5 +2,6 @@
 <meta charset="utf-8">
 <title>Web Intents: Share</title>
 <script>window.Intent = window.Intent || window.WebKitIntent;</script>
+<script src="http://webintents.org/webintents.min.js"></script>
 
 <a href="." onclick="window.navigator.startActivity(new Intent('http://webintents.org/share', 'text/uri-list', this.href)); return false;">Share</a>

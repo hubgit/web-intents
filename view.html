@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
 <style>h1 { margin: 10px 0; }</style>
 <script>window.Intent = window.Intent || window.WebKitIntent || window.MozIntent</script>
+<script src="http://webintents.org/webintents.min.js"></script>
 
 <div class="container">
 
@@ -28,7 +29,7 @@ for (var i = 0; i< nodes.length; i++) {
 
 	node.addEventListener("click", function(event) {
 		event.preventDefault();
-		window.navigator.startActivity(new Intent("http://webintents.org/view", "application/pdf", this.href)); 
+		window.navigator.startActivity(new Intent("http://webintents.org/view", "application/pdf", this.href));
 	}, true);
 }
 </script>
