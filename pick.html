@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Intent: Pick</title>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style>
+h1 { margin: 10px 0; }
+li { padding-bottom: 10px; }
+</style>
+
+<script>window.Intent = window.Intent || window.WebKitIntent</script>
+<script>window.navigator.startActivity = window.navigator.startActivity || window.navigator.webkitStartActivity || window.navigator.mozStartActivity</script>
+
+<div class="container">
+
+	<header>
+		<h1>Web Intent: Pick</h1>
+	</header>
+
+	<ol>
+		<!--<li><a href="https://chrome.google.com/webstore/detail/eaefpedeienehcklfkdcembjhmihdmfm">Install the Metatato Chrome extension</a>, which provides a "pick" intent handler.</li>-->
+		<li><button class="btn btn-primary" data-mimetype="application/pdf">Pick a PDF</a></li>
+		<li><button class="btn btn-primary" data-mimetype="text/bibtex">Pick a BibTex file</a></li>
+		<li><button class="btn btn-primary" data-mimetype="image/*">Pick an image</a></li>
+	</ol>
+
+	<object id="file" style="height:600px; width:300px;">The picked file will be displayed here.</object>
+</div>
+
+<script>
+
+var nodes = document.querySelectorAll("button[data-mimetype]");
+
+[].forEach.call(nodes, function(node) {
+	node.addEventListener("click", function(event) {
+		event.preventDefault();
+
+		var mimetype = event.target.getAttribute("data-mimetype");
+		var intent = new Intent("http://webintents.org/pick", mimetype);
+
+		var handleURL = function(url) {
+		  var container = document.getElementById("file");
+		  container.setAttribute("type", mimetype);
+		  container.setAttribute("src", url);
+		};
+
+		window.navigator.startActivity(intent, handleURL);
+	}, true);
+});
+</script>

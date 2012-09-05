@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Web Intents: Share</title>
-<script>window.Intent = window.Intent || window.WebKitIntent;</script>
-<script src="http://webintents.org/webintents.min.js"></script>
 
-<a href="." onclick="window.navigator.startActivity(new Intent('http://webintents.org/share', 'text/uri-list', this.href)); return false;">Share</a>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+
+<script>window.Intent = window.Intent || window.WebKitIntent</script>
+<script>window.navigator.startActivity = window.navigator.startActivity || window.navigator.webkitStartActivity || window.navigator.mozStartActivity</script>
+
+<div class="container">
+
+	<header>
+		<h1>Web Intent: Share</h1>
+	</header>
+
+	<p>Share a link to this page.</p>
+
+	<button class="btn btn-primary" onclick="window.navigator.startActivity(new Intent('http://webintents.org/share', 'text/uri-list', this.href)); return false;">Share</a>
+
+</div>
